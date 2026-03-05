@@ -1,0 +1,12 @@
+import pandas as pd
+
+years = range(2015, 2026)
+dfs = []
+
+for year in years:
+    url = f"http://tennis-data.co.uk/{year}/{year}.xlsx"
+    df = pd.read_excel(url)
+    df['year'] = year
+    dfs.append(df)
+
+odds_df = pd.concat(dfs, ignore_index=True)
